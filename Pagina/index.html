@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmacia SaludPlus</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>💊 Farmacia SaludPlus</h1>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#productos">Productos</a>
+        <a href="#info">Información</a>
+        <button onclick="verCarrito()">🛒 Carrito (<span id="contador">0</span>)</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Tu salud es nuestra prioridad</h2>
+    <p>Medicamentos confiables, atención segura y productos de calidad.</p>
+</section>
+
+<section id="productos">
+    <h2>Productos Disponibles</h2>
+
+    <div class="contenedor-productos">
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/150" alt="">
+            <h3>Paracetamol</h3>
+            <p>Alivio del dolor y fiebre</p>
+            <span>$5.000</span>
+            <button onclick="agregarCarrito('Paracetamol', 5000)">Agregar</button>
+        </div>
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/150" alt="">
+            <h3>Ibuprofeno</h3>
+            <p>Antiinflamatorio</p>
+            <span>$8.000</span>
+            <button onclick="agregarCarrito('Ibuprofeno', 8000)">Agregar</button>
+        </div>
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/150" alt="">
+            <h3>Jarabe para la tos</h3>
+            <p>Alivia la tos seca</p>
+            <span>$12.000</span>
+            <button onclick="agregarCarrito('Jarabe', 12000)">Agregar</button>
+        </div>
+
+        <div class="producto">
+            <img src="https://via.placeholder.com/150" alt="">
+            <h3>Vitamina C</h3>
+            <p>Refuerza defensas</p>
+            <span>$10.000</span>
+            <button onclick="agregarCarrito('Vitamina C', 10000)">Agregar</button>
+        </div>
+
+    </div>
+</section>
+
+<section id="info" class="info">
+    <h2>Información</h2>
+    <p>En Farmacia SaludPlus ofrecemos medicamentos certificados, asesoría profesional y atención responsable. Consulta siempre a tu médico antes de consumir cualquier producto.</p>
+</section>
+
+<!-- CARRITO -->
+<div id="carrito" class="carrito oculto">
+    <h2>🛒 Carrito</h2>
+    <ul id="listaCarrito"></ul>
+    <h3>Total: $<span id="total">0</span></h3>
+    <button onclick="vaciarCarrito()">Vaciar</button>
+    <button onclick="cerrarCarrito()">Cerrar</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
