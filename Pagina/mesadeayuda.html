@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesa de ayuda | Farmacia Alameda</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f8f8;--card:#fff;--ink:#0e2a33;--mut:#4d6870;--line:#d3e1e3;--teal:#0f7c86;--teal2:#0b5f67;--amb:#f2a93b;--soft:#e2f0f1;--err:#b23a26}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1a1f;--card:#12272d;--ink:#e8f2f3;--mut:#9ab4ba;--line:#24424a;--teal:#3fb8c3;--teal2:#2a98a2;--soft:#173339;--err:#ff8b73}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+svg.i{width:1.4em;height:1.4em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+header{border-bottom:1px solid var(--line)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;gap:10px;align-items:center;font-weight:800;font-size:1.15rem;text-decoration:none}
+.logo svg{color:var(--teal);width:28px;height:28px}
+.back{display:flex;gap:6px;align-items:center;color:var(--mut);text-decoration:none;font-size:.95rem}
+.back:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--amb);outline-offset:2px}
+.hero{padding:48px 0 28px}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.06;margin:0 0 14px;font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:1.08rem;max-width:52ch;margin:0 0 24px}
+.search{position:relative;max-width:560px}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mut)}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px}
+.search input{padding-left:46px;border-radius:999px;padding-top:14px;padding-bottom:14px}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--amb);outline-offset:1px;border-color:var(--amb)}
+h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 8px;line-height:1.1}
+section{padding:32px 0}
+.ch{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ch div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;gap:14px}
+.ch svg{color:var(--teal);width:28px;height:28px;margin-top:2px}
+.ch b{display:block}.ch span{color:var(--mut);font-size:.92rem}
+.two{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
+.f{margin-bottom:14px}
+label{display:block;font-weight:600;font-size:.92rem;margin-bottom:6px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.pair{grid-template-columns:1fr}}
+textarea{min-height:120px;resize:vertical}
+.er{color:var(--err);font-size:.85rem;margin-top:4px;min-height:1em}
+.btn{display:inline-flex;gap:8px;align-items:center;background:var(--teal2);color:#fff;padding:12px 22px;border-radius:999px;border:0;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.o{background:none;color:var(--ink);border:1.5px solid var(--line)}
+.ok{display:none;background:var(--soft);border-radius:16px;padding:16px;margin-top:16px}
+.ok.s{display:block}
+.ok b{font-size:1.15rem}
+.ok .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.tk{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.tk li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.tk b{display:block;font-size:.98rem}.tk span{color:var(--mut);font-size:.85rem}
+.chip{background:var(--soft);color:var(--teal2);border-radius:999px;padding:3px 10px;font-size:.8rem;font-weight:600;white-space:nowrap}
+@media(prefers-color-scheme:dark){.chip{color:var(--teal)}}
+.tk button{background:none;border:0;color:var(--mut);cursor:pointer;padding:4px}
+.tk button:hover{color:var(--err)}
+.empty{color:var(--mut);font-size:.95rem;margin:14px 0 0}
+.lk{display:flex;gap:8px;margin-top:18px}
+.lk input{border-radius:999px}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:10px}
+summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary svg{transition:transform .2s;color:var(--teal)}
+details[open] summary svg{transform:rotate(45deg)}
+details p{margin:0;padding:0 18px 16px;color:var(--mut);max-width:70ch}
+.none{display:none;color:var(--mut)}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--mut);font-size:.9rem;margin-top:24px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="cross" viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></symbol>
+<symbol id="back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+<symbol id="find" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
+</defs>
+</svg>
+
+<header><div class="w">
+<a class="logo" href="farmacia.html"><svg class="i"><use href="#cross"/></svg>Farmacia Alameda</a>
+<a class="back" href="farmacia.html"><svg class="i"><use href="#back"/></svg>Volver al inicio</a>
+</div></header>
+
+<main>
+<div class="hero"><div class="w">
+<h1>Mesa de ayuda</h1>
+<p>Busca una respuesta rápida o envíanos tu solicitud. Un farmacéutico la revisa y te contacta.</p>
+<div class="search"><svg class="i"><use href="#find"/></svg><input id="q" type="search" placeholder="Busca: entrega, fórmula, horarios, pagos..." aria-label="Buscar en preguntas frecuentes"></div>
+</div></div>
+
+<section style="padding-top:8px"><div class="w"><div class="ch">
+<div><svg class="i"><use href="#phone"/></svg><p style="margin:0"><b>Llámanos</b><span>(601) 555 0142<br>Lun a sáb 7:00 a. m. – 9:00 p. m.</span></p></div>
+<div><svg class="i"><use href="#mail"/></svg><p style="margin:0"><b>Escríbenos</b><span>ayuda@farmaciaalameda.co<br>Respondemos en el mismo día hábil</span></p></div>
+<div><svg class="i"><use href="#chat"/></svg><p style="margin:0"><b>Orientación farmacéutica</b><span>En el mostrador, sin cita previa</span></p></div>
+</div></div></section>
+
+<section><div class="w"><div class="two">
+<div class="panel">
+<h2>Nueva solicitud</h2>
+<p class="empty" style="margin:0 0 16px">Los campos con asterisco son obligatorios.</p>
+<form id="fm" novalidate>
+<div class="pair">
+<div class="f"><label for="nm">Nombre *</label><input id="nm" autocomplete="name"><div class="er" id="e-nm"></div></div>
+<div class="f"><label for="ct">Teléfono o correo *</label><input id="ct" autocomplete="email"><div class="er" id="e-ct"></div></div>
+</div>
+<div class="pair">
+<div class="f"><label for="cat">Tema</label><select id="cat"><option>Pedido a domicilio</option><option>Fórmula médica</option><option>Disponibilidad de un producto</option><option>Pagos y facturas</option><option>Reclamo o sugerencia</option><option>Otro</option></select></div>
+<div class="f"><label for="pr">Urgencia</label><select id="pr"><option>Normal</option><option>Alta, es un tratamiento en curso</option></select></div>
+</div>
+<div class="f"><label for="ms">Cuéntanos qué necesitas *</label><textarea id="ms"></textarea><div class="er" id="e-ms"></div></div>
+<button class="btn" type="submit"><svg class="i"><use href="#plus"/></svg>Enviar solicitud</button>
+</form>
+<div class="ok" id="ok" role="status">
+<b>Solicitud <span id="cd"></span> guardada</b>
+<p style="margin:6px 0 0;color:var(--mut)">Para que llegue al equipo, envíala también por correo con el botón de abajo.</p>
+<div class="row"><a class="btn" id="ml" href="#"><svg class="i"><use href="#mail"/></svg>Enviar por correo</a></div>
+</div>
+</div>
+
+<div class="panel">
+<h2>Mis solicitudes</h2>
+<p class="empty" style="margin:0">Se guardan solo en este navegador.</p>
+<ul class="tk" id="tk"></ul>
+<p class="empty" id="em">Aún no has enviado solicitudes.</p>
+<div class="lk"><input id="lc" placeholder="Código, por ejemplo MA-4821" aria-label="Código de solicitud"><button class="btn o" id="lb" type="button">Consultar</button></div>
+<div class="er" id="lr" role="status"></div>
+</div>
+</div></div></section>
+
+<section><div class="w">
+<h2>Preguntas frecuentes</h2>
+<p class="empty" style="margin:0 0 16px" id="cnt"></p>
+<div id="fq">
+<details><summary>¿Cuánto tarda una entrega a domicilio?<svg class="i"><use href="#plus"/></svg></summary><p>Los pedidos confirmados antes de las 4:00 p. m. llegan el mismo día en la zona de cobertura. Los demás salen a primera hora del día siguiente.</p></details>
+<details><summary>¿Cómo envío mi fórmula médica?<svg class="i"><use href="#plus"/></svg></summary><p>Puedes traerla al mostrador o enviar una foto legible por correo. Un farmacéutico verifica dosis y disponibilidad antes de confirmarte el pedido.</p></details>
+<details><summary>¿Qué horarios de atención tienen?<svg class="i"><use href="#plus"/></svg></summary><p>Atendemos de lunes a sábado de 7:00 a. m. a 9:00 p. m., y domingos y festivos de 9:00 a. m. a 6:00 p. m.</p></details>
+<details><summary>¿Qué medios de pago aceptan?<svg class="i"><use href="#plus"/></svg></summary><p>Efectivo, tarjetas débito y crédito, transferencia y pago contra entrega con datáfono. Emitimos factura electrónica si la solicitas al pagar.</p></details>
+<details><summary>¿Pueden apartar un medicamento que no tienen en stock?<svg class="i"><use href="#plus"/></svg></summary><p>Sí. Lo pedimos a nuestro proveedor y te avisamos por mensaje cuando llegue. Suele tardar entre uno y tres días hábiles.</p></details>
+<details><summary>¿Qué hago si mi pedido llegó incompleto o dañado?<svg class="i"><use href="#plus"/></svg></summary><p>Crea una solicitud con el tema Reclamo o sugerencia e incluye el número del pedido. Lo reponemos o te devolvemos el valor tras revisarlo.</p></details>
+</div>
+<p class="none" id="nf">No encontramos preguntas con esa búsqueda. Crea una solicitud y te ayudamos.</p>
+</div></section>
+</main>
+<footer><div class="w">Farmacia Alameda. Para urgencias médicas comunícate con la línea de emergencias de tu ciudad.</div></footer>
+
+<script>
+const $=id=>document.getElementById(id),K="mesa-ayuda-farmacia";
+let L=[];try{L=JSON.parse(localStorage.getItem(K))||[]}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(L))}catch(e){}};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function draw(){
+ $("tk").innerHTML=L.map((t,i)=>`<li><div><b>${t.c} · ${esc(t.cat)}</b><span>${t.d}</span></div><div style="display:flex;gap:8px;align-items:center"><span class="chip">Recibida</span><button data-i="${i}" aria-label="Eliminar ${t.c}"><svg class="i"><use href="#trash"/></svg></button></div></li>`).join("");
+ $("em").style.display=L.length?"none":"block";
+}
+$("tk").onclick=e=>{const b=e.target.closest("button");if(!b)return;L.splice(+b.dataset.i,1);save();draw()};
+$("fm").onsubmit=e=>{
+ e.preventDefault();
+ const v={nm:$("nm").value.trim(),ct:$("ct").value.trim(),ms:$("ms").value.trim()};
+ const m={nm:"Escribe tu nombre.",ct:"Indica un teléfono o correo para responderte.",ms:"Cuéntanos qué necesitas."};
+ let bad=false;
+ for(const k in v){const x=!v[k];$("e-"+k).textContent=x?m[k]:"";if(x&&!bad){$(k).focus()}bad=bad||x}
+ if(bad)return;
+ const code="MA-"+String(Math.floor(1000+Math.random()*9000));
+ const t={c:code,cat:$("cat").value,pr:$("pr").value,nm:v.nm,ct:v.ct,ms:v.ms,d:new Date().toLocaleDateString("es",{day:"numeric",month:"short",year:"numeric"})};
+ L.unshift(t);save();draw();
+ const body=`Código: ${code}\nNombre: ${t.nm}\nContacto: ${t.ct}\nTema: ${t.cat}\nUrgencia: ${t.pr}\n\n${t.ms}`;
+ $("ml").href="mailto:ayuda@farmaciaalameda.co?subject="+encodeURIComponent("Solicitud "+code)+"&body="+encodeURIComponent(body);
+ $("cd").textContent=code;$("ok").classList.add("s");$("fm").reset();
+};
+$("lb").onclick=()=>{
+ const c=$("lc").value.trim().toUpperCase(),t=L.find(x=>x.c===c);
+ $("lr").style.color=t?"var(--teal)":"var(--err)";
+ $("lr").textContent=!c?"Escribe un código.":t?`${t.c}: ${t.cat}, recibida el ${t.d}.`:"No encontramos ese código en este navegador.";
+};
+$("q").oninput=()=>{
+ const q=$("q").value.trim().toLowerCase();let n=0;
+ document.querySelectorAll("#fq details").forEach(d=>{const s=!q||d.textContent.toLowerCase().includes(q);d.style.display=s?"":"none";if(s)n++;if(q&&s)d.open=n===1});
+ $("nf").style.display=n?"none":"block";
+ $("cnt").textContent=q?n+" resultado"+(n===1?"":"s"):"";
+};
+draw();
+</script>
+</body>
+</html>
