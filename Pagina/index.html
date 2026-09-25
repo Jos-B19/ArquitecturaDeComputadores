@@ -79,6 +79,45 @@ td.t{font-size:.88rem;color:#cfe3e6;white-space:nowrap;padding-right:6px}
 .info div{display:flex;gap:14px;align-items:flex-start}
 .info svg{color:var(--teal);width:28px;height:28px}
 .info b{display:block}.info span{color:var(--mut);font-size:.95rem}
+#ayuda{--err:#b23a26}
+@media(prefers-color-scheme:dark){#ayuda{--err:#ff8b73}}
+#ayuda .search{position:relative;max-width:560px;margin-bottom:28px}
+#ayuda .search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mut)}
+#ayuda input,#ayuda select,#ayuda textarea{width:100%;font:inherit;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px}
+#ayuda .search input{padding:14px 14px 14px 46px;border-radius:999px}
+#ayuda input:focus,#ayuda select:focus,#ayuda textarea:focus{outline:3px solid var(--amb);outline-offset:1px;border-color:var(--amb)}
+#ayuda h3.h{font-size:1.4rem;margin:0 0 6px}
+#ayuda .ch{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:24px}
+#ayuda .ch div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;gap:14px}
+#ayuda .ch svg{color:var(--teal);width:28px;height:28px;margin-top:2px}
+#ayuda .ch b,#ayuda .info b{display:block}#ayuda .ch span{color:var(--mut);font-size:.92rem}
+#ayuda .two{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:start;margin-bottom:40px}
+@media(max-width:860px){#ayuda .two{grid-template-columns:1fr}}
+#ayuda .panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px}
+#ayuda .f{margin-bottom:14px}
+#ayuda label{display:block;font-weight:600;font-size:.92rem;margin-bottom:6px}
+#ayuda .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){#ayuda .pair{grid-template-columns:1fr}}
+#ayuda textarea{min-height:120px;resize:vertical}
+#ayuda .er{color:var(--err);font-size:.85rem;margin-top:4px;min-height:1em}
+#ayuda .mok{display:none;background:var(--soft);border-radius:16px;padding:16px;margin-top:16px}
+#ayuda .mok.s{display:block}
+#ayuda .tk{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+#ayuda .tk li{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+#ayuda .tk b{display:block;font-size:.98rem}#ayuda .tk span{color:var(--mut);font-size:.85rem}
+#ayuda .tk .chip{background:var(--soft);color:var(--teal2);border-radius:999px;padding:3px 10px;font-size:.8rem;font-weight:600;white-space:nowrap}
+@media(prefers-color-scheme:dark){#ayuda .tk .chip{color:var(--teal)}}
+#ayuda .tk button{background:none;border:0;color:var(--mut);cursor:pointer;padding:4px}
+#ayuda .tk button:hover{color:var(--err)}
+#ayuda .mut{color:var(--mut);font-size:.95rem;margin:0}
+#ayuda .lk{display:flex;gap:8px;margin-top:18px}
+#ayuda .lk input{border-radius:999px}
+#ayuda details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:10px}
+#ayuda summary{cursor:pointer;padding:16px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+#ayuda summary::-webkit-details-marker{display:none}
+#ayuda summary svg{transition:transform .2s;color:var(--teal)}
+#ayuda details[open] summary svg{transform:rotate(45deg)}
+#ayuda details p{margin:0;padding:0 18px 16px;color:var(--mut);max-width:70ch}
 footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-size:.9rem}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -101,12 +140,17 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
 <symbol id="bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
 <symbol id="scan" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 9v6M12 9v6M16 9v6"/></symbol>
+<symbol id="find" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
 </defs>
 </svg>
 
 <header><div class="w">
 <a class="logo" href="#"><svg class="i"><use href="#cross"/></svg>Farmacia Alameda</a>
-<nav><a href="#servicios">Servicios</a><a href="#salud">Salud al día</a><a href="#contacto">Contacto</a></nav>
+<nav><a href="#servicios">Servicios</a><a href="#salud">Salud al día</a><a href="#ayuda">Mesa de ayuda</a><a href="#contacto">Contacto</a></nav>
 <a class="btn" href="#contacto"><svg class="i"><use href="#phone"/></svg>Pedir ahora</a>
 </div></header>
 
@@ -183,6 +227,59 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mut);font-siz
 </div>
 </div></div></section>
 
+<section id="ayuda"><div class="w">
+<h2>Mesa de ayuda</h2>
+<p class="lead">Busca una respuesta rápida o envíanos tu solicitud. Un farmacéutico la revisa y te contacta.</p>
+<div class="search"><svg class="i"><use href="#find"/></svg><input id="q" type="search" placeholder="Busca: entrega, fórmula, horarios, pagos..." aria-label="Buscar en preguntas frecuentes"></div>
+<div class="ch">
+<div><svg class="i"><use href="#phone"/></svg><p style="margin:0"><b>Llámanos</b><span>(601) 555 0142<br>Lun a sáb 7:00 a. m. – 9:00 p. m.</span></p></div>
+<div><svg class="i"><use href="#mail"/></svg><p style="margin:0"><b>Escríbenos</b><span>ayuda@farmaciaalameda.co<br>Respondemos en el mismo día hábil</span></p></div>
+<div><svg class="i"><use href="#chat"/></svg><p style="margin:0"><b>Orientación farmacéutica</b><span>En el mostrador, sin cita previa</span></p></div>
+</div>
+<div class="two">
+<div class="panel">
+<h3 class="h">Nueva solicitud</h3>
+<p class="mut" style="margin-bottom:16px">Los campos con asterisco son obligatorios.</p>
+<form id="fm" novalidate>
+<div class="pair">
+<div class="f"><label for="nm">Nombre *</label><input id="nm" autocomplete="name"><div class="er" id="e-nm"></div></div>
+<div class="f"><label for="ct">Teléfono o correo *</label><input id="ct" autocomplete="email"><div class="er" id="e-ct"></div></div>
+</div>
+<div class="pair">
+<div class="f"><label for="cat">Tema</label><select id="cat"><option>Pedido a domicilio</option><option>Fórmula médica</option><option>Disponibilidad de un producto</option><option>Pagos y facturas</option><option>Reclamo o sugerencia</option><option>Otro</option></select></div>
+<div class="f"><label for="pr">Urgencia</label><select id="pr"><option>Normal</option><option>Alta, es un tratamiento en curso</option></select></div>
+</div>
+<div class="f"><label for="ms">Cuéntanos qué necesitas *</label><textarea id="ms"></textarea><div class="er" id="e-ms"></div></div>
+<button class="btn" type="submit"><svg class="i"><use href="#plus"/></svg>Enviar solicitud</button>
+</form>
+<div class="mok" id="mok" role="status">
+<b>Solicitud <span id="cd"></span> guardada</b>
+<p class="mut" style="margin:6px 0 12px">Para que llegue al equipo, envíala también por correo con el botón de abajo.</p>
+<a class="btn" id="ml" href="#"><svg class="i"><use href="#mail"/></svg>Enviar por correo</a>
+</div>
+</div>
+<div class="panel">
+<h3 class="h">Mis solicitudes</h3>
+<p class="mut">Se guardan solo en este navegador.</p>
+<ul class="tk" id="tk"></ul>
+<p class="mut" id="em" style="margin-top:14px">Aún no has enviado solicitudes.</p>
+<div class="lk"><input id="lc" placeholder="Código, por ejemplo MA-4821" aria-label="Código de solicitud"><button class="btn o" id="lb" type="button">Consultar</button></div>
+<div class="er" id="lr" role="status"></div>
+</div>
+</div>
+<h3 class="h">Preguntas frecuentes</h3>
+<p class="mut" id="cnt" style="margin-bottom:14px;min-height:1.4em"></p>
+<div id="fq">
+<details><summary>¿Cuánto tarda una entrega a domicilio?<svg class="i"><use href="#plus"/></svg></summary><p>Los pedidos confirmados antes de las 4:00 p. m. llegan el mismo día en la zona de cobertura. Los demás salen a primera hora del día siguiente.</p></details>
+<details><summary>¿Cómo envío mi fórmula médica?<svg class="i"><use href="#plus"/></svg></summary><p>Puedes traerla al mostrador o enviar una foto legible por correo. Un farmacéutico verifica dosis y disponibilidad antes de confirmarte el pedido.</p></details>
+<details><summary>¿Qué horarios de atención tienen?<svg class="i"><use href="#plus"/></svg></summary><p>Atendemos de lunes a sábado de 7:00 a. m. a 9:00 p. m., y domingos y festivos de 9:00 a. m. a 6:00 p. m.</p></details>
+<details><summary>¿Qué medios de pago aceptan?<svg class="i"><use href="#plus"/></svg></summary><p>Efectivo, tarjetas débito y crédito, transferencia y pago contra entrega con datáfono. Emitimos factura electrónica si la solicitas al pagar.</p></details>
+<details><summary>¿Pueden apartar un medicamento que no tienen en stock?<svg class="i"><use href="#plus"/></svg></summary><p>Sí. Lo pedimos a nuestro proveedor y te avisamos por mensaje cuando llegue. Suele tardar entre uno y tres días hábiles.</p></details>
+<details><summary>¿Qué hago si mi pedido llegó incompleto o dañado?<svg class="i"><use href="#plus"/></svg></summary><p>Crea una solicitud con el tema Reclamo o sugerencia e incluye el número del pedido. Lo reponemos o te devolvemos el valor tras revisarlo.</p></details>
+</div>
+<p class="mut" id="nf" style="display:none">No encontramos preguntas con esa búsqueda. Crea una solicitud y te ayudamos.</p>
+</div></section>
+
 <section id="contacto"><div class="w">
 <h2>Visítanos o escríbenos</h2>
 <p class="lead">Datos de ejemplo: reemplázalos por los de tu farmacia.</p>
@@ -211,6 +308,43 @@ const n=new Date(),g=n.getDay(),h=n.getHours();
 const o=g===0?(h>=9&&h<18):(h>=7&&h<21);
 document.getElementById("st").textContent=o?"Abierto ahora":"Cerrado ahora";
 document.getElementById("dot").classList.toggle("c",!o);
+(()=>{
+const $=id=>document.getElementById(id),K="mesa-ayuda-farmacia";
+let L=[];try{L=JSON.parse(localStorage.getItem(K))||[]}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(L))}catch(e){}};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function draw(){
+ $("tk").innerHTML=L.map((t,i)=>`<li><div><b>${t.c} · ${esc(t.cat)}</b><span>${t.d}</span></div><div style="display:flex;gap:8px;align-items:center"><span class="chip">Recibida</span><button data-i="${i}" aria-label="Eliminar ${t.c}"><svg class="i"><use href="#trash"/></svg></button></div></li>`).join("");
+ $("em").style.display=L.length?"none":"block";
+}
+$("tk").onclick=e=>{const b=e.target.closest("button");if(!b)return;L.splice(+b.dataset.i,1);save();draw()};
+$("fm").onsubmit=e=>{
+ e.preventDefault();
+ const v={nm:$("nm").value.trim(),ct:$("ct").value.trim(),ms:$("ms").value.trim()};
+ const m={nm:"Escribe tu nombre.",ct:"Indica un teléfono o correo para responderte.",ms:"Cuéntanos qué necesitas."};
+ let bad=false;
+ for(const k in v){const x=!v[k];$("e-"+k).textContent=x?m[k]:"";if(x&&!bad)$(k).focus();bad=bad||x}
+ if(bad)return;
+ const code="MA-"+String(Math.floor(1000+Math.random()*9000));
+ const t={c:code,cat:$("cat").value,pr:$("pr").value,nm:v.nm,ct:v.ct,ms:v.ms,d:new Date().toLocaleDateString("es",{day:"numeric",month:"short",year:"numeric"})};
+ L.unshift(t);save();draw();
+ const body=`Código: ${code}\nNombre: ${t.nm}\nContacto: ${t.ct}\nTema: ${t.cat}\nUrgencia: ${t.pr}\n\n${t.ms}`;
+ $("ml").href="mailto:ayuda@farmaciaalameda.co?subject="+encodeURIComponent("Solicitud "+code)+"&body="+encodeURIComponent(body);
+ $("cd").textContent=code;$("mok").classList.add("s");$("fm").reset();
+};
+$("lb").onclick=()=>{
+ const c=$("lc").value.trim().toUpperCase(),t=L.find(x=>x.c===c);
+ $("lr").style.color=t?"var(--teal)":"var(--err)";
+ $("lr").textContent=!c?"Escribe un código.":t?`${t.c}: ${t.cat}, recibida el ${t.d}.`:"No encontramos ese código en este navegador.";
+};
+$("q").oninput=()=>{
+ const q=$("q").value.trim().toLowerCase();let n=0;
+ document.querySelectorAll("#fq details").forEach(d=>{const s=!q||d.textContent.toLowerCase().includes(q);d.style.display=s?"":"none";if(s)n++;if(q&&s)d.open=n===1});
+ $("nf").style.display=n?"none":"block";
+ $("cnt").textContent=q?n+" resultado"+(n===1?"":"s"):"";
+};
+draw();
+})();
 </script>
 </body>
 </html>
